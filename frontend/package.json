@@ -1,0 +1,81 @@
+{
+  "name": "job-portal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "start": "set SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "set SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "browser": {
+    "child_process": false,
+    "crypto": false
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@material-ui/lab": "^4.0.0-alpha.61",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "axios": "^1.2.1",
+    "buffer": "^6.0.3",
+    "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.0",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "http2": "^3.3.7",
+    "material-ui": "^0.20.0",
+    "material-ui-chip-input": "^2.0.0-beta.2",
+    "mui": "^0.0.1",
+    "multer": "^1.4.5-lts.1",
+    "net": "^1.0.2",
+    "path": "^0.12.7",
+    "querystring": "^0.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-phone-input-2": "^2.15.1",
+    "react-router-dom": "^6.6.1",
+    "react-scripts": "^5.0.1",
+    "stream": "^0.0.2",
+    "url": "^0.11.0",
+    "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "web-vitals": "^3.1.0"
+  },
+  "node": {
+    "fs": "empty"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
+  }
+}
