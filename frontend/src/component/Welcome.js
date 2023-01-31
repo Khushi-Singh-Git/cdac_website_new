@@ -1,8 +1,10 @@
 import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 import '../index.css';
+import product from "../Assets/product.jpeg";
 const Welcome = (props) => {
   return (
+    <>
     <Grid
       container
       item
@@ -16,8 +18,24 @@ const Welcome = (props) => {
          <Grid item>
         <Typography variant="h3" style={{color:"white",fontFamily:"Poppins"}}>Welcome to Paediatric pulmonary care Portal</Typography> <br></br>
         <Typography variant="h2" style={{color:"#c7ecee",fontFamily:"Poppins"}}>TeleShravan</Typography>
+
+        
       </Grid>
     </Grid>
+    <div> <img
+                      src={product}
+                      width="350px"
+                      height="350px"
+                      alt=".."
+                      style={{
+                        borderRadius: "50%",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        display: "block",
+                        boxShadow: "0 0 5px 5px black",
+                      }}
+                    /></div>
+    </>
   );
 };
 
