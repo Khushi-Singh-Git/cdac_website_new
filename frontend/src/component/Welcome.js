@@ -14,7 +14,8 @@ const Welcome = (props) => {
      
    
          <Grid item>
-        <Typography variant="h2" color="white">Welcome to Paediatric pulmonary care Portal</Typography>
+        <Typography variant="h3" style={{color:"white",fontFamily:"Poppins"}}>Welcome to Paediatric pulmonary care Portal</Typography> <br></br>
+        <Typography variant="h2" style={{color:"#c7ecee",fontFamily:"Poppins"}}>TeleShravan</Typography>
       </Grid>
     </Grid>
   );

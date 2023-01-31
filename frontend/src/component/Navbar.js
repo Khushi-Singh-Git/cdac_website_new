@@ -67,29 +67,29 @@ const Navbar = (props) => {
             </>
           ) : (
             <>           
-            <Button color="inherit" onClick={() => handleClick("/home")}>
+            <Button color="inherit" style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/home")}>
               Home
             </Button>
-            <Button color="inherit" onClick={() => handleClick("/about")}>
+            <Button color="inherit" style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/about")}>
               About
             </Button>
-            <Button color="inherit" onClick={() => handleClick("/contact")}>
-              Contact
+            <Button style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/diagnose")}>
+              Diagnose
             </Button>
-            <Button color="inherit" onClick={() => handleClick("/team")}>
+            <Button color="inherit" style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/team")}>
               Team
             </Button>
-            <Button color="inherit" onClick={() => handleClick("/logout")}>
+            <Button color="inherit" style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/logout")}>
                 Logout
               </Button>
             </>
           )
         ) : (
           <>
-            <Button color="inherit" onClick={() => handleClick("/login")}>
+            <Button color="inherit"  style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/login")}>
               Login
             </Button>
-            <Button color="inherit" onClick={() => handleClick("/signup")}>
+            <Button color="inherit" style={{color:"white",fontFamily:"Poppins",fontSize:"20px"}} onClick={() => handleClick("/signup")}>
               Signup
             </Button>
           

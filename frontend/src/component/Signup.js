@@ -235,6 +235,9 @@ const Login = (props) => {
       )
         .then((response) => {
           console.log(response);
+          localStorage.setItem("token", response.user.accessToken);
+        //localStorage.setItem("type", response.data.type);
+        setLoggedin(isAuth());
         })
         .catch((err) => {
           console.log("auth error", err);
@@ -325,6 +328,9 @@ const Login = (props) => {
       )
         .then((response) => {
           console.log(response);
+          localStorage.setItem("token", response.user.accessToken);
+        //localStorage.setItem("type", response.data.type);
+        setLoggedin(isAuth());
         })
         .catch((err) => {
           console.log("auth error", err);

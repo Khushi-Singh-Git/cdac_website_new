@@ -73,14 +73,16 @@ const Login = (props) => {
       auth,
       loginDetails["email"],
       loginDetails["password"]
-    ).then((response) =>{
-      console.log(response)
-
-    }).catch((err) => {
-      console.log("Error occured",err)
-      
-
-    });
+    )
+      .then((response) => {
+        console.log(response);
+        localStorage.setItem("token", response.user.accessToken);
+        //localStorage.setItem("type", response.data.type);
+        setLoggedin(isAuth());
+      })
+      .catch((err) => {
+        console.log("Error occured", err);
+      });
     // if (verified) {
     //   axios
     //     .post(apiList.login, loginDetails)
