@@ -74,8 +74,16 @@ function Diagnose() {
 
   return (
     <>
-    
-      <div style={{ color: "white", fontSize: "27px",width: "750px",border: "15px solid #40739e", padding: "50px", margin: "20px" }}>
+      <div
+        style={{
+          color: "white",
+          fontSize: "27px",
+          width: "750px",
+          border: "15px solid #40739e",
+          padding: "50px",
+          
+        }}
+      >
         <h2 style={{ fontFamily: "Poppins" }}>
           Upload the lung auscultation sound files here:
         </h2>
@@ -83,6 +91,7 @@ function Diagnose() {
         {processing ? (
           "Uploading..."
         ) : (
+          <div>
           <form
             id="FormId"
             //   action="/multiple-upload"
@@ -97,7 +106,7 @@ function Diagnose() {
               multiple
               ref={filesRef}
               name="images"
-              style={{ fontSize: "23px",fontFamily:"Poppins" }}
+              style={{ fontSize: "23px", fontFamily: "Poppins" }}
             />
             <button
               style={{
@@ -110,23 +119,33 @@ function Diagnose() {
             >
               Submit
             </button>
-            <br></br><br></br>
+            <br></br>
+            <br></br>
+           
           </form>
-   
+          
+          </div>
+       
         )}
         {showDiagnoseButton ? (
           showDiagnosing ? (
-            <p style={{ fontFamily: "Poppins",textAlign:"center" }}>Diagnosing the audio files and fetching AI generated results...</p>
+            <p style={{ fontFamily: "Poppins", textAlign: "center" }}>
+              Diagnosing the audio files and fetching AI generated results...
+            </p>
           ) : (
-            <button onClick={diagnose} disabled={showDiagnosing} style={{
-              fontFamily: "Poppins",
-              fontSize: "25px",
-              borderRadius: "7px",
-              backgroundColor: "#c7ecee",
-              textAlign:"center",
-              display:"flex",
-              justifyContent:"center",
-            }}>
+            <button
+              onClick={diagnose}
+              disabled={showDiagnosing}
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "25px",
+                borderRadius: "7px",
+                backgroundColor: "#c7ecee",
+                textAlign: "center",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               Diagnose
             </button>
           )
@@ -138,17 +157,65 @@ function Diagnose() {
           <p>hi</p>
         )
       ) : null} */}
-      <div style={{fontFamily:"Poppins",display:"flex",justifyContent:"center",color:"#f0932b",fontSize:"35px",fontStyle:"bold"}}>   {stateReport }</div>
-     
+        <div
+          style={{
+            fontFamily: "Poppins",
+            display: "flex",
+            justifyContent: "center",
+            color: "#f0932b",
+            fontSize: "35px",
+            fontStyle: "bold",
+          }}
+        >
+          {" "}
+          {stateReport}
+        </div>
       </div>
-      <br></br><br></br>
+      <br></br>
+      <br></br>
       <hr></hr>
       <h6
-      style={{ textAlign: "center", color: "white", fontFamily: "poppins",marginBottom:"1px",paddingBottom:"1px" }}>
-      {" "}
-      Developed by CDAC, Mohali
-    </h6></>
-  
+        style={{
+          textAlign: "center",
+          color: "white",
+          fontFamily: "poppins",
+          marginBottom: "1px",
+          paddingBottom: "1px",
+        }}
+        
+      >
+        
+        <div>
+          
+          <form 
+          onSubmit={()=>{     fetch("http://localhost:4000/delete", {
+            headers: { "Access-Control-Allow-Origin": "*" },
+            method: "POST",
+            // mode: "no-cors",
+                    
+          })}}
+          
+          
+          
+          >
+            <button
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "25px",
+                borderRadius: "7px",
+                backgroundColor: "#ff7979",
+              }}
+              type="submit"
+              
+         
+            >
+              Refresh
+            </button></form></div>
+            <br></br>
+        {" "}
+        Developed by CDAC, Mohali
+      </h6>
+    </>
   );
 }
 
