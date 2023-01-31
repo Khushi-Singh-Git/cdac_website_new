@@ -8,10 +8,10 @@ import {
   makeStyles,
   Paper,
   MenuItem,
-
 } from "@material-ui/core";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
 // import ChipInput from "material-ui-chip-input";
 // import DescriptionIcon from "@material-ui/icons/Description";
 // import FaceIcon from "@material-ui/icons/Face";
@@ -25,6 +25,7 @@ import { SetPopupContext } from "../App";
 
 import apiList from "../lib/apiList";
 import isAuth from "../lib/isAuth";
+import { auth } from "../firebase-config";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -132,7 +133,7 @@ const Login = (props) => {
     profile: "",
     bio: "",
     contactNumber: "",
-    aadharNumber:"",
+    aadharNumber: "",
   });
 
   const [phone, setPhone] = useState("");
@@ -185,7 +186,7 @@ const Login = (props) => {
     });
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const tmpErrorHandler = {};
     Object.keys(inputErrorHandler).forEach((obj) => {
       if (inputErrorHandler[obj].required && inputErrorHandler[obj].untouched) {
@@ -220,39 +221,64 @@ const Login = (props) => {
       return tmpErrorHandler[obj].error;
     });
 
-    if (verified) {
-      axios
-        .post(apiList.signup, updatedDetails)
+    console.log(
+      `email : ${signupDetails["email"]} password : ${signupDetails["password"]}`
+    );
+
+    try {
+      //AUTHENTICAION
+
+      await createUserWithEmailAndPassword(
+        auth,
+        signupDetails["email"],
+        signupDetails["password"]
+      )
         .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("type", response.data.type);
-          setLoggedin(isAuth());
-          setPopup({
-            open: true,
-            severity: "success",
-            message: "Logged in successfully",
-          });
           console.log(response);
         })
         .catch((err) => {
-          setPopup({
-            open: true,
-            severity: "error",
-            message: err.response.data.message,
-          });
-          console.log(err.response);
+          console.log("auth error", err);
         });
+
+      //firebase login karna padega
+    } catch (error) {
+      console.log("some error occured", error);
+    }
+
+    if (verified) {
+      //auth logic
+      // axios
+      //   .post(apiList.signup, updatedDetails)
+      //   .then((response) => {
+      //     localStorage.setItem("token", response.data.token);
+      //     localStorage.setItem("type", response.data.type);
+      //     setLoggedin(isAuth());
+      //     setPopup({
+      //       open: true,
+      //       severity: "success",
+      //       message: "Logged in successfully",
+      //     });
+      //     console.log(response);
+      //   })
+      //   .catch((err) => {
+      //     setPopup({
+      //       open: true,
+      //       severity: "error",
+      //       message: err.response.data.message,
+      //     });
+      //     console.log(err.response);
+      //   });
     } else {
-      setInputErrorHandler(tmpErrorHandler);
-      setPopup({
-        open: true,
-        severity: "error",
-        message: "Incorrect Input",
-      });
+      // setInputErrorHandler(tmpErrorHandler);
+      // setPopup({
+      //   open: true,
+      //   severity: "error",
+      //   message: "Incorrect Input",
+      // });
     }
   };
 
-  const handleLoginRecruiter = () => {
+  const handleLoginRecruiter = async () => {
     const tmpErrorHandler = {};
     Object.keys(inputErrorHandler).forEach((obj) => {
       if (inputErrorHandler[obj].required && inputErrorHandler[obj].untouched) {
@@ -289,37 +315,55 @@ const Login = (props) => {
     });
 
     console.log(updatedDetails);
+    try {
+      //AUTHENTICAION
 
-    if (verified) {
-      axios
-        .post(apiList.signup, updatedDetails)
+      await createUserWithEmailAndPassword(
+        auth,
+        signupDetails["email"],
+        signupDetails["password"]
+      )
         .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("type", response.data.type);
-          setLoggedin(isAuth());
-          setPopup({
-            open: true,
-            severity: "success",
-            message: "Logged in successfully",
-          });
           console.log(response);
         })
         .catch((err) => {
-          setPopup({
-            open: true,
-            severity: "error",
-            message: err.response.data.message,
-          });
-          console.log(err.response);
+          console.log("auth error", err);
         });
-    } else {
-      setInputErrorHandler(tmpErrorHandler);
-      setPopup({
-        open: true,
-        severity: "error",
-        message: "Incorrect Input",
-      });
+
+      //firebase login karna padega
+    } catch (error) {
+      console.log("some error occured", error);
     }
+    // if (verified) {
+    //   axios
+    //     .post(apiList.signup, updatedDetails)
+    //     .then((response) => {
+    //       localStorage.setItem("token", response.data.token);
+    //       localStorage.setItem("type", response.data.type);
+    //       setLoggedin(isAuth());
+    //       setPopup({
+    //         open: true,
+    //         severity: "success",
+    //         message: "Logged in successfully",
+    //       });
+    //       console.log(response);
+    //     })
+    //     .catch((err) => {
+    //       setPopup({
+    //         open: true,
+    //         severity: "error",
+    //         message: err.response.data.message,
+    //       });
+    //       console.log(err.response);
+    //     });
+    // } else {
+    //   setInputErrorHandler(tmpErrorHandler);
+    //   setPopup({
+    //     open: true,
+    //     severity: "error",
+    //     message: "Incorrect Input",
+    //   });
+    // }
   };
 
   return loggedin ? (
@@ -397,13 +441,19 @@ const Login = (props) => {
           <TextField
             label="Aadhar Number"
             value={signupDetails.aadharNumber}
-            onChange={(event) => handleInput("aadharNumber", event.target.value)}
+            onChange={(event) =>
+              handleInput("aadharNumber", event.target.value)
+            }
             className={classes.inputBox}
             error={inputErrorHandler.name.error}
             helperText={inputErrorHandler.name.message}
             onBlur={(event) => {
               if (event.target.value === "") {
-                handleInputError("aadharNumber", true, "Aadhar number is required");
+                handleInputError(
+                  "aadharNumber",
+                  true,
+                  "Aadhar number is required"
+                );
               } else {
                 handleInputError("aadharNumber", false, "");
               }
@@ -411,21 +461,21 @@ const Login = (props) => {
             variant="outlined"
           />
         </Grid>
-        
+
         {signupDetails.type === "healthworker" ? (
           <>
             <MultifieldInput
               education={education}
               setEducation={setEducation}
             />
-              <Grid item>
+            <Grid item>
               <PhoneInput
                 country={"in"}
                 value={phone}
                 onChange={(phone) => setPhone(phone)}
               />
             </Grid>
-           
+
             {/* <Grid item>
               <ChipInput
                 className={classes.inputBox}
@@ -471,7 +521,7 @@ const Login = (props) => {
                 identifier={"profile"}
               />
             </Grid> */}
-              {/* <Grid item>
+            {/* <Grid item>
           <TextField
             label="Contact Number"
             value={signupDetails.contactNumber}
@@ -541,5 +591,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
-

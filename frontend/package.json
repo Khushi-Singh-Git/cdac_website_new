@@ -31,6 +31,7 @@
     "crypto": false
   },
   "dependencies": {
+    "@firebase/auth": "^0.21.1",
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "@material-ui/lab": "^4.0.0-alpha.61",
@@ -40,6 +41,7 @@
     "buffer": "^6.0.3",
     "crypto": "^1.0.1",
     "crypto-browserify": "^3.12.0",
+    "firebase": "^9.16.0",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "http2": "^3.3.7",

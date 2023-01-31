@@ -7,7 +7,7 @@ const fs = require("fs");
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/cdac_stetho", {
-    useNewUrlParser: true,
+    // useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,

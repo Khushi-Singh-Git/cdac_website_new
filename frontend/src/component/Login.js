@@ -1,13 +1,6 @@
 import React from "react";
 import { useContext, useState } from "react";
-import {
-  Grid,
-  
-  Button,
-  Typography,
-  makeStyles,
-  Paper,
-} from "@material-ui/core";
+import { Grid, Button, Typography, makeStyles, Paper } from "@material-ui/core";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 
@@ -17,6 +10,8 @@ import { SetPopupContext } from "../App";
 
 import apiList from "../lib/apiList";
 import isAuth from "../lib/isAuth";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "../firebase-config";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -73,35 +68,48 @@ const Login = (props) => {
     const verified = !Object.keys(inputErrorHandler).some((obj) => {
       return inputErrorHandler[obj].error;
     });
-    if (verified) {
-      axios
-        .post(apiList.login, loginDetails)
-        .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("type", response.data.type);
-          setLoggedin(isAuth());
-          setPopup({
-            open: true,
-            severity: "success",
-            message: "Logged in successfully",
-          });
-          console.log(response);
-        })
-        .catch((err) => {
-          setPopup({
-            open: true,
-            severity: "error",
-            message: err.response.data.message,
-          });
-          console.log(err.response);
-        });
-    } else {
-      setPopup({
-        open: true,
-        severity: "error",
-        message: "Incorrect Input",
-      });
-    }
+
+    signInWithEmailAndPassword(
+      auth,
+      loginDetails["email"],
+      loginDetails["password"]
+    ).then((response) =>{
+      console.log(response)
+
+    }).catch((err) => {
+      console.log("Error occured",err)
+      
+
+    });
+    // if (verified) {
+    //   axios
+    //     .post(apiList.login, loginDetails)
+    //     .then((response) => {
+    //       localStorage.setItem("token", response.data.token);
+    //       localStorage.setItem("type", response.data.type);
+    //       setLoggedin(isAuth());
+    //       setPopup({
+    //         open: true,
+    //         severity: "success",
+    //         message: "Logged in successfully",
+    //       });
+    //       console.log(response);
+    //     })
+    //     .catch((err) => {
+    //       setPopup({
+    //         open: true,
+    //         severity: "error",
+    //         message: err.response.data.message,
+    //       });
+    //       console.log(err.response);
+    //     });
+    // } else {
+    //   setPopup({
+    //     open: true,
+    //     severity: "error",
+    //     message: "Incorrect Input",
+    //   });
+    // }
   };
 
   return loggedin ? (
