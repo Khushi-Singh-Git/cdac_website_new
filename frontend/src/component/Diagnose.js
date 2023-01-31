@@ -203,13 +203,13 @@ function Diagnose() {
                 fontFamily: "Poppins",
                 fontSize: "25px",
                 borderRadius: "7px",
-                backgroundColor: "#ff7979",
+                backgroundColor: "#7ed6df",
               }}
               type="submit"
               
          
             >
-              Refresh
+              Start a new diagnosis
             </button></form></div>
             <br></br>
         {" "}
