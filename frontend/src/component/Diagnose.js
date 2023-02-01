@@ -27,6 +27,19 @@ function Diagnose() {
       .then((body) => {
         console.log("her");
         console.log(body);
+        setEnableStart(false);
+
+        //delete the file after the result
+        fetch("http://localhost:4000/delete", {
+          headers: { "Access-Control-Allow-Origin": "*" },
+          method: "POST",
+          // mode: "no-cors",
+        });
+        fetch("http://localhost:4000/delete", {
+          headers: { "Access-Control-Allow-Origin": "*" },
+          method: "POST",
+          // mode: "no-cors",
+        });
 
         //access button after files uplaoded
       })
@@ -75,7 +88,7 @@ function Diagnose() {
 
   function enableStartButton(event) {
     event.preventDefault();
-    setEnableStart(true)
+    setEnableStart(true);
   }
 
   return (
@@ -87,11 +100,11 @@ function Diagnose() {
 
             enableStartButton(event);
 
-            // fetch("http://localhost:4000/delete", {
-            //   headers: { "Access-Control-Allow-Origin": "*" },
-            //   method: "POST",
-            //   // mode: "no-cors",
-            // });
+            fetch("http://localhost:4000/delete", {
+              headers: { "Access-Control-Allow-Origin": "*" },
+              method: "POST",
+              // mode: "no-cors",
+            });
           }}
         >
           <button
