@@ -49,7 +49,7 @@ function Diagnose() {
     fetch("http://localhost:4000/diagnose", {
       headers: { "Access-Control-Allow-Origin": "*" },
       method: "GET",
-      // mode: "no-cors",
+      //mode: "no-cors",
     })
       .then((response) => response.json())
       .then((body) => {
@@ -74,6 +74,31 @@ function Diagnose() {
 
   return (
     <>
+      <div>
+        <form
+          onSubmit={() => {
+            fetch("http://localhost:4000/delete", {
+              headers: { "Access-Control-Allow-Origin": "*" },
+              method: "POST",
+              // mode: "no-cors",
+            });
+          }}
+        >
+          <button
+            style={{
+              fontFamily: "Poppins",
+              fontSize: "25px",
+              borderRadius: "7px",
+              backgroundColor: "#7ed6df",
+            }}
+            type="submit"
+          >
+            Start Auscultation
+          </button>
+        </form>
+      </div>
+      <br></br>
+
       <div
         style={{
           color: "white",
@@ -81,7 +106,6 @@ function Diagnose() {
           width: "750px",
           border: "15px solid #40739e",
           padding: "50px",
-          
         }}
       >
         <h2 style={{ fontFamily: "Poppins" }}>
@@ -92,40 +116,39 @@ function Diagnose() {
           "Uploading..."
         ) : (
           <div>
-          <form
-            id="FormId"
-            //   action="/multiple-upload"
-            method="POST"
-            encType="multipart/form-data"
-            onSubmit={(event) => {
-              submitFile(event);
-            }}
-          >
-            <input
-              type="file"
-              multiple
-              ref={filesRef}
-              name="images"
-              style={{ fontSize: "23px", fontFamily: "Poppins" }}
-            />
-            <button
-              style={{
-                fontFamily: "Poppins",
-                fontSize: "25px",
-                borderRadius: "7px",
-                backgroundColor: "#c7ecee",
+            <form
+              id="FormId"
+              //   action="/multiple-upload"
+              method="POST"
+              encType="multipart/form-data"
+              onSubmit={(event) => {
+                submitFile(event);
               }}
-              type="submit"
             >
-              Submit
-            </button>
-            <br></br>
-            <br></br>
-           
-          </form>
-          
+              <input
+                type="file"
+                multiple
+                ref={filesRef}
+                name="images"
+                style={{ fontSize: "23px", fontFamily: "Poppins" }}
+              />
+              <button
+                style={{
+                  fontFamily: "Poppins",
+                  fontSize: "25px",
+                  borderRadius: "7px",
+                  backgroundColor: "#c7ecee",
+                }}
+                type="submit"
+                disabled={true}
+                id={"submitButton"}
+              >
+                Submit
+              </button>
+              <br></br>
+              <br></br>
+            </form>
           </div>
-       
         )}
         {showDiagnoseButton ? (
           showDiagnosing ? (
@@ -182,38 +205,8 @@ function Diagnose() {
           marginBottom: "1px",
           paddingBottom: "1px",
         }}
-        
       >
-        
-        <div>
-          
-          <form 
-          onSubmit={()=>{     fetch("http://localhost:4000/delete", {
-            headers: { "Access-Control-Allow-Origin": "*" },
-            method: "POST",
-            // mode: "no-cors",
-                    
-          })}}
-          
-          
-          
-          >
-            <button
-              style={{
-                fontFamily: "Poppins",
-                fontSize: "25px",
-                borderRadius: "7px",
-                backgroundColor: "#7ed6df",
-              }}
-              type="submit"
-              
-         
-            >
-              Start a new diagnosis
-            </button></form></div>
-            <br></br>
-        {" "}
-        Developed by CDAC, Mohali
+        <br></br> Developed by CDAC, Mohali
       </h6>
     </>
   );
