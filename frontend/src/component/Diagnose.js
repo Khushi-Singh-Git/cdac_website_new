@@ -27,14 +27,7 @@ function Diagnose() {
       .then((body) => {
         console.log("her");
         console.log(body);
-        setEnableStart(true);
-
-        //delete the file after the result
-        fetch("http://localhost:4000/delete", {
-          headers: { "Access-Control-Allow-Origin": "*" },
-          method: "POST",
-          // mode: "no-cors",
-        });
+        setEnableStart(false); //disable the submit button
 
         //access button after files uplaoded
       })
