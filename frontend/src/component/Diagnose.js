@@ -27,14 +27,9 @@ function Diagnose() {
       .then((body) => {
         console.log("her");
         console.log(body);
-        setEnableStart(false);
+        setEnableStart(true);
 
         //delete the file after the result
-        fetch("http://localhost:4000/delete", {
-          headers: { "Access-Control-Allow-Origin": "*" },
-          method: "POST",
-          // mode: "no-cors",
-        });
         fetch("http://localhost:4000/delete", {
           headers: { "Access-Control-Allow-Origin": "*" },
           method: "POST",
@@ -96,7 +91,7 @@ function Diagnose() {
       <div>
         <form
           onSubmit={(event) => {
-            //allow the submit button
+            //allow the submit button and clear the upload folder
 
             enableStartButton(event);
 
