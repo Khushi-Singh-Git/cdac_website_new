@@ -39,7 +39,6 @@ function App() {
     message: "",
   });
   return (
-   
     <BrowserRouter>
       <SetPopupContext.Provider value={setPopup}>
         <Grid container direction="column">
@@ -48,16 +47,15 @@ function App() {
           </Grid>
           <Grid item className={classes.body}>
             <Routes>
-              <Route exact path="/" element={<Welcome/>}></Route>
-              <Route exact path="/login" element={<Login/>}></Route>
-              <Route exact path="/signup" element={<Signup/>}></Route>
-              <Route exact path="/logout" element={<Logout/>}></Route>
-              <Route exact path="/home" element={<Home/>}></Route>
-              <Route exact path="/about" element={<About/>}></Route>
-              <Route exact path="/diagnose" element={<Diagnose/>}></Route>
-              <Route exact path="/team" element={<Team/>}></Route>
-              <Route exact path="/" element={<ErrorPage/>}></Route>
-
+              <Route exact path="/" element={<Welcome />}></Route>
+              <Route exact path="/login" element={<Login />}></Route>
+              <Route exact path="/signup" element={<Signup />}></Route>
+              <Route exact path="/logout" element={<Logout />}></Route>
+              <Route exact path="/home" element={<Home />}></Route>
+              <Route exact path="/about" element={<About />}></Route>
+              <Route exact path="/diagnose" element={<Diagnose />}></Route>
+              <Route exact path="/team" element={<Team />}></Route>
+              <Route exact path="/" element={<ErrorPage />}></Route>
             </Routes>
           </Grid>
         </Grid>

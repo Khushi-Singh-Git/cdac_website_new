@@ -5,6 +5,7 @@ function Diagnose() {
   const [showDiagnoseButton, setshowDiagnose] = useState(false);
   const [showDiagnosing, setshowDiagnosing] = useState(false);
   const [stateReport, setstateReport] = useState("");
+  const [enableStart, setEnableStart] = useState(false);
 
   function submitFile(event) {
     event.preventDefault();
@@ -72,16 +73,25 @@ function Diagnose() {
 
   const filesRef = useRef();
 
+  function enableStartButton(event) {
+    event.preventDefault();
+    setEnableStart(true)
+  }
+
   return (
     <>
       <div>
         <form
-          onSubmit={() => {
-            fetch("http://localhost:4000/delete", {
-              headers: { "Access-Control-Allow-Origin": "*" },
-              method: "POST",
-              // mode: "no-cors",
-            });
+          onSubmit={(event) => {
+            //allow the submit button
+
+            enableStartButton(event);
+
+            // fetch("http://localhost:4000/delete", {
+            //   headers: { "Access-Control-Allow-Origin": "*" },
+            //   method: "POST",
+            //   // mode: "no-cors",
+            // });
           }}
         >
           <button
@@ -140,7 +150,7 @@ function Diagnose() {
                   backgroundColor: "#c7ecee",
                 }}
                 type="submit"
-                disabled={true}
+                disabled={!enableStart}
                 id={"submitButton"}
               >
                 Submit
