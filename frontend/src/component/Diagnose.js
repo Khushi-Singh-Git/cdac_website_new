@@ -12,7 +12,7 @@ function Diagnose() {
     console.log("event fired");
     console.log(event.target);
     setProcessing(true);
-    fetch("http://localhost:4000/multiple", {
+    fetch("https://teleshravan.herokuapp.com/multiple", {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST",
@@ -48,7 +48,7 @@ function Diagnose() {
   function diagnose() {
     setshowDiagnosing(true);
     console.log("diagnose fired");
-    fetch("http://localhost:4000/diagnose", {
+    fetch("https://teleshravan.herokuapp.com/diagnose", {
       headers: { "Access-Control-Allow-Origin": "*" },
       method: "GET",
       //mode: "no-cors",
@@ -88,7 +88,7 @@ function Diagnose() {
 
             enableStartButton(event);
 
-            fetch("http://localhost:4000/delete", {
+            fetch("https://teleshravan.herokuapp.com/delete", {
               headers: { "Access-Control-Allow-Origin": "*" },
               method: "POST",
               // mode: "no-cors",
