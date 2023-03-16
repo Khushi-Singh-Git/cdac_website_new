@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { baseUrl } from "../constants";
 
 function Diagnose() {
   const [processing, setProcessing] = useState(false);
@@ -12,7 +13,7 @@ function Diagnose() {
     console.log("event fired");
     console.log(event.target);
     setProcessing(true);
-    fetch("https://teleshravan.herokuapp.com/multiple", {
+    fetch(`${baseUrl}/multiple`, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST",
@@ -25,10 +26,9 @@ function Diagnose() {
     })
       .then((response) => response.json())
       .then((body) => {
-        console.log("her");
+        console.log("api working");
         console.log(body);
         setEnableStart(false); //disable the submit button
-
         //access button after files uplaoded
       })
       .catch((error) => {
@@ -48,7 +48,7 @@ function Diagnose() {
   function diagnose() {
     setshowDiagnosing(true);
     console.log("diagnose fired");
-    fetch("https://teleshravan.herokuapp.com/diagnose", {
+    fetch(`${baseUrl}/diagnose`, {
       headers: { "Access-Control-Allow-Origin": "*" },
       method: "GET",
       //mode: "no-cors",
@@ -88,7 +88,7 @@ function Diagnose() {
 
             enableStartButton(event);
 
-            fetch("https://teleshravan.herokuapp.com/delete", {
+            fetch(`${baseUrl}/delete`, {
               headers: { "Access-Control-Allow-Origin": "*" },
               method: "POST",
               // mode: "no-cors",
