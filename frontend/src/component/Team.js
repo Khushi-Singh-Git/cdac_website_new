@@ -3,7 +3,6 @@ import vksharma from "../Assets/VkSharma.JPG";
 import Joseph from "../Assets/Joseph.jpg";
 import vishal from "../Assets/Vishal.jpg";
 import deepak from "../Assets/Deepak.jpg";
-import cdac from "../Assets/cdac.jpg";
 import manoj from "../Assets/Manoj.jpg";
 import anil from "../Assets/Anil.jpg";
 import "../index.css";
@@ -33,7 +32,7 @@ const Team = () => {
           <h3>
             <strong
               className="brand"
-              style={{ color: "#02284A", fontFamily: "Poppins" }}
+              style={{ color: "#02284A", fontFamily: "Poppins"}}
             >
               Guidance
             </strong>
@@ -167,10 +166,9 @@ const Team = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div>
-        <br></br>
+        {/* <div> */}
+      <br></br>
         <div
           style={{
             borderRadius: "8px",
@@ -211,7 +209,7 @@ const Team = () => {
                   <div class="card-body">
                     <h5 class="card-title">Sh. Manoj Jain,</h5>
                     <p class="card-text">Scientist F</p>
-                    <p class="card-text">Ministry of Electronics & IT (Meity)</p>
+                    <p class="card-text">Ministry of Electronics & IT (Meity), Govt. of India, New Delhi</p>
                   </div>
                 </div>
               </div>
@@ -243,9 +241,11 @@ const Team = () => {
             </div>
           </div>
         </div>
+      {/* </div> */}
       </div>
-<br></br>
-     
+
+      
+      <br></br>
 
       <hr></hr>
       <h6

@@ -9,6 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import isAuth, { userType } from "../lib/isAuth";
+import Contact from "./Contact";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,6 +103,16 @@ const Navbar = (props) => {
                   fontFamily: "Poppins",
                   fontSize: "20px",
                 }}
+                onClick={() => handleClick("/contact")}
+              >
+                Contact
+              </Button>
+              <Button
+                style={{
+                  color: "white",
+                  fontFamily: "Poppins",
+                  fontSize: "20px",
+                }}
                 onClick={() => handleClick("/logout")}
               >
                 Logout
@@ -152,6 +163,16 @@ const Navbar = (props) => {
               >
                 Credit
               </Button>
+              <Button
+                style={{
+                  color: "white",
+                  fontFamily: "Poppins",
+                  fontSize: "20px",
+                }}
+                onClick={() => handleClick("/contact")}
+              >
+                Contact
+                </Button>
               <Button
                 color="inherit"
                 style={{

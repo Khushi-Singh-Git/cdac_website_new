@@ -9,6 +9,7 @@ import Home from "./component/Home";
 import Login from "./component/Login";
 import Logout from "./component/Logout";
 import Signup from "./component/Signup";
+import Contact from "./component/Contact";
 // import Main from "./component/Main";
 import Team from "./component/Team";
 // import server from "./component/server";
@@ -56,6 +57,7 @@ function App() {
               <Route exact path="/diagnose" element={<Diagnose />}></Route>
               <Route exact path="/team" element={<Team />}></Route>
               <Route exact path="/" element={<ErrorPage />}></Route>
+              <Route exact path="/contact" element={<Contact />}></Route>
             </Routes>
           </Grid>
         </Grid>

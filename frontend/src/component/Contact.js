@@ -7,14 +7,16 @@ import cdac from "../Assets/cdac.jpg";
 import manoj from "../Assets/Manoj.jpg";
 import anil from "../Assets/Anil.jpg";
 import "../index.css";
-const Team = () => {
+const Contact = () => {
   return (
     <>
+
+    <br></br>
  <div style={{ textAlign: "center" }}>
         <img
           src={cdac}
           width="800px"
-          height="500px"
+          height="400px"
           alt=".."
           style={{
             marginLeft: "auto",
@@ -64,4 +66,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Contact;
