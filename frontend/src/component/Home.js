@@ -48,8 +48,8 @@ const Home = () => {
                   <div className="animated col-lg-6 order-1 order-lg-2 mt-5">
                     <img
                       src={product}
-                      width="350px"
-                      height="350px"
+                      width="400px"
+                      height="400px"
                       alt=".."
                       style={{
                         borderRadius: "50%",
@@ -66,46 +66,9 @@ const Home = () => {
           </div>
         </section>
         <br></br><br></br>
-        <div
-          class="container"
-          style={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            fontFamily: "poppins",
-          }}
-        >
+       
          
-          <div class="row">
-            
-            {/* <Navlink to='/Contact'><button type="button" class="btn btn-warning">Consult the lung specialist now</button></Navlink> */}
-            <NavLink to="/Diagnose">
-              <button type="button" class="btn btn-warning" style={{fontFamily:"Poppins",fontSize:"20px",}}>
-                Upload Lung Sound
-              </button>
-            </NavLink>
-          </div>
-          <div class="row">
-            <NavLink to="/About">
-              <button type="button" class="btn btn-info" style={{fontFamily:"Poppins",fontSize:"20px",}}>
-                About initiative
-              </button>
-            </NavLink>
-          </div>
-          <div class="row">
-            <NavLink to="/Login">
-              <button type="button" class="btn btn-success" style={{fontFamily:"Poppins",fontSize:"20px",}}>
-                Login/Register
-              </button>
-            </NavLink>
-          </div>
-          <div class="row">
-            <NavLink className="nav-link" to="/Team">
-              <button type="button" class="btn btn-danger" style={{fontFamily:"Poppins",fontSize:"20px",}}>
-                Contact us
-              </button>
-            </NavLink>
-          </div>
-        </div>
+         
 
         <hr style={{ fontSize: "30px" }}></hr>
         {/* <img src='https://i0.wp.com/orissadiary.com/wp-content/uploads/2021/09/Ministry-of-Electronics-and-Information-Technology.png?fit=225%2C225&ssl=1' style={{borderRadius:"50%"}} height="100px" width="100px" alt=".."></img> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -77,10 +77,36 @@ function Diagnose() {
   function enableStartButton(event) {
     event.preventDefault();
     setEnableStart(true);
+    setstateReport("");
   }
 
   return (
     <>
+
+<div
+            style={{
+              color: "white",
+              fontSize: "20px",
+              width: "750px",
+              fontFamily: "Poppins",
+              border: "5px solid #40739e",
+              padding: "5px",
+              margin:"5px"
+            }}
+          >
+            <div style={{color:"#f0932b",fontSize:"24px",textAlign:"center"}}>Instructions to Use</div>
+
+            1. Click “Start Auscultation” 
+            <br></br>
+            2. Choose Multiple sound file recorded and named* properly 
+            <br></br>
+            3. Click Upload > Diagnose 
+            <br></br>
+            4. For next auscultation, go to step 1.
+            <br></br>
+            <div  style={{color:"#ff7979"}}>*sound file should be name as: “patient Id_Location.wav” example “10_ALL.wav”</div>
+          </div>
+<br></br>
       <div>
         <form
           onSubmit={(event) => {
@@ -101,6 +127,7 @@ function Diagnose() {
               fontSize: "25px",
               borderRadius: "7px",
               backgroundColor: "#7ed6df",
+
             }}
             type="submit"
           >
@@ -115,7 +142,7 @@ function Diagnose() {
           color: "white",
           fontSize: "27px",
           width: "750px",
-          border: "15px solid #40739e",
+          border: "5px solid #40739e",
           padding: "50px",
         }}
       >
@@ -191,21 +218,21 @@ function Diagnose() {
           <p>hi</p>
         )
       ) : null} */}
-        <div
-          style={{
-            fontFamily: "Poppins",
-            display: "flex",
-            justifyContent: "center",
-            color: "#f0932b",
-            fontSize: "35px",
-            fontStyle: "bold",
-          }}
-        >
-          {" "}
-          {stateReport}
-        </div>
+        {enableStart === false ? (
+          <div
+            style={{
+              fontFamily: "Poppins",
+              display: "flex",
+              justifyContent: "center",
+              color: "#f0932b",
+              fontSize: "35px",
+              fontStyle: "bold",
+            }}
+          >
+            {stateReport}
+          </div>
+        ) : null}
       </div>
-      <br></br>
       <br></br>
       <hr></hr>
       <h6

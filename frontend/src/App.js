@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import { Grid, makeStyles } from "@material-ui/core";
 import Welcome, { ErrorPage } from "./component/Welcome";
 import Navbar from "./component/Navbar";
@@ -39,7 +39,7 @@ function App() {
     message: "",
   });
   return (
-    <BrowserRouter>
+    <HashRouter>
       <SetPopupContext.Provider value={setPopup}>
         <Grid container direction="column">
           <Grid item xs>
@@ -71,7 +71,7 @@ function App() {
           message={popup.message}
         />
       </SetPopupContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

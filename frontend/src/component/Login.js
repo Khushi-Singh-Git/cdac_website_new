@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Grid, Button, Typography, makeStyles, Paper } from "@material-ui/core";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import PasswordInput from "../lib/PasswordInput";
 import EmailInput from "../lib/EmailInput";
 import { SetPopupContext } from "../App";
@@ -46,6 +46,13 @@ const Login = (props) => {
       message: "",
     },
   });
+
+  
+  const history = useNavigate();
+  const handleClick = (location) => {
+    console.log(location);
+    history(location);
+  };
 
   const handleInput = (key, value) => {
     setLoginDetails({
@@ -115,7 +122,7 @@ const Login = (props) => {
   };
 
   return loggedin ? (
-    <Navigate to="/" />
+    <Navigate to="/home" />
   ) : (
     <Paper elevation={3} className={classes.body}>
       <Grid container direction="column" spacing={4} alignItems="center">
@@ -151,7 +158,20 @@ const Login = (props) => {
           >
             Login
           </Button>
+          <br></br>
+          
         </Grid>
+        <Typography
+              color="inherit"
+              style={{
+                color: "red",
+                fontFamily: "Poppins",
+                fontSize: "20px",
+              }}
+              onClick={() => handleClick("/signup")}
+            >
+              Not yet registered?, click here to Signup
+            </Typography>
       </Grid>
     </Paper>
   );
